@@ -60,7 +60,20 @@ public class Seaviver {
 		new Seaviver();
 	}
 	
+	/**
+	 * This is the Seaviver object constructor.
+	 * 
+	 * @throws LWJGLException because.
+	 */
 	public Seaviver() throws LWJGLException{
+		
+		/*
+		 * Exiting the program if there are no scenes added to the buffer.
+		 */
+		if(SCENES.size() == 0){
+			System.err.println("There are no scenes in buffer.");
+			System.exit(0);
+		}
 		
 		/*
 		 * Creating our display with a title.
@@ -82,12 +95,21 @@ public class Seaviver {
 	 * This is the GameLoop
 	 */
 	private void loop(){
+		
+		/*
+		 * Starting the actual loop
+		 */
 		while(!Display.isCloseRequested()){
 			
 			/*
-			 * Clearing the display.
+			 * Fetching the current scene, because we will need it.
 			 */
-			clearDisplay(Color.white, 1f);
+			Scene scene = getCurrentScene();
+			
+			/*
+			 * Clearing the display with the current scene's background-color.
+			 */
+			clearDisplay(scene.getBackgroundColor(), 1f);
 			
 			/*
 			 * Updating the current state of the game.

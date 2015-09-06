@@ -1,3 +1,2 @@
 ## Seaviver
-> Escape the sea
-> Currently in Development.
+> Escape the sea.

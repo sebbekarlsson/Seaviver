@@ -2,6 +2,7 @@ package seaviver.main;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.util.ArrayList;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
@@ -38,6 +39,16 @@ public class Seaviver {
 	 * Setting the default title for the display.
 	 */
 	public static String TITLE = "SEAVIVER";
+	
+	/*
+	 * Creating the scene-list that will hold all of the game's scenes.
+	 */
+	public static ArrayList<Scene> SCENES = new ArrayList<Scene>();
+	
+	/*
+	 * This is basically a pointer for the scene-list. (Which scene is currently relevant?)
+	 */
+	public static int SCENE_INDEX = 0;
 	
 	/**
 	 * Let's start the game by creating an instance of it.
@@ -98,6 +109,15 @@ public class Seaviver {
 	}
 	
 	/**
+	 * This function is used to update the current state of the game. (Probably only used in the GameLoop)
+	 * 
+	 * @param delta the current delta-time.
+	 */
+	private void update(int delta){
+		
+	}
+	
+	/**
 	 * This function is used to create our display.
 	 * 
 	 * @param title a title for the Display.
@@ -121,11 +141,11 @@ public class Seaviver {
 	}
 	
 	/**
-	 * This function is used to update the current state of the game. (Probably only used in the GameLoop)
+	 * This function is used to get the current scene that is currently viewed and updated.
 	 * 
-	 * @param delta the current delta-time.
+	 * @return current scene.
 	 */
-	private void update(int delta){
-		
+	public static Scene getCurrentScene(){
+		return SCENES.get(SCENE_INDEX);
 	}
 }

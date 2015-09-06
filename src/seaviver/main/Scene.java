@@ -26,6 +26,7 @@ public abstract class Scene {
 	 * @param delta the current delta-time.
 	 */
 	public void update(int delta){
+		updateActors(delta);
 		tick(delta);
 		draw(delta);
 	}
@@ -40,9 +41,20 @@ public abstract class Scene {
 	/**
 	 * This function is used to update the current state of the graphics for this scene.
 	 * 
-	 * @param delta the current delta time.
+	 * @param delta the current delta-time.
 	 */
 	protected abstract void draw(int delta);
+	
+	/**
+	 * This is a private method that updates all of the actors in this scene.
+	 * 
+	 * @param delta the current delta-time
+	 */
+	private void updateActors(int delta){
+		for(int i = 0; i < actors.size(); i++){
+			actors.get(i).update(delta);
+		}
+	}
 	
 	/**
 	 * 

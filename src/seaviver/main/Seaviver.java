@@ -68,6 +68,11 @@ public class Seaviver {
 	public Seaviver() throws LWJGLException{
 		
 		/*
+		 * Initialize the game.
+		 */
+		init();
+		
+		/*
 		 * Exiting the program if there are no scenes added to the buffer.
 		 */
 		if(SCENES.size() == 0){
@@ -137,6 +142,13 @@ public class Seaviver {
 	 */
 	private void update(int delta){
 		
+	}
+	
+	/**
+	 * This function is used to initialize the game.
+	 */
+	private void init(){
+		TextureBank.loadTextures("res/textures");
 	}
 	
 	/**

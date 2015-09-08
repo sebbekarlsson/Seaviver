@@ -173,6 +173,9 @@ public class Seaviver {
 		TextureBank.loadTextures("res/textures");
 	}
 	
+	/**
+	 * This function is used to initialize the 2D graphics (glOrtho-view)
+	 */
 	private static void set_graphics_2d(){
 		GL11.glMatrixMode(GL11.GL_PROJECTION_MATRIX);
 		GL11.glOrtho(0, Display.getWidth(), 0, Display.getHeight(), 1, -1);

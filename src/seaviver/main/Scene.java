@@ -12,7 +12,7 @@ public abstract class Scene {
 	/*
 	 * Setting the default background-color.
 	 */
-	private Color backgroundColor = Color.white;
+	private Color backgroundColor = Color.black;
 	
 	/*
 	 * Creating a list that will hold actors. (Objects that will be updated & drawn)

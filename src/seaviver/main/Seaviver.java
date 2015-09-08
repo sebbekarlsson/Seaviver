@@ -3,11 +3,14 @@ package seaviver.main;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
+
+import seaviver.main.test.Test_Scene;
 
 /**
  * 
@@ -68,19 +71,6 @@ public class Seaviver {
 	public Seaviver() throws LWJGLException{
 		
 		/*
-		 * Initialize the game.
-		 */
-		init();
-		
-		/*
-		 * Exiting the program if there are no scenes added to the buffer.
-		 */
-		if(SCENES.size() == 0){
-			System.err.println("There are no scenes in buffer.");
-			System.exit(0);
-		}
-		
-		/*
 		 * Creating our display with a title.
 		 */
 		createDisplay(TITLE);
@@ -100,11 +90,21 @@ public class Seaviver {
 	 * This is the GameLoop
 	 */
 	private void loop(){
+			
+		/*
+		 * Initializing the game.
+		 */
+		init();
 		
 		/*
 		 * Starting the actual loop
 		 */
 		while(!Display.isCloseRequested()){
+			
+			/*
+			 * Updating our 2D graphics.
+			 */
+			set_graphics_2d();
 			
 			/*
 			 * Fetching the current scene, because we will need it.
@@ -148,7 +148,36 @@ public class Seaviver {
 	 * This function is used to initialize the game.
 	 */
 	private void init(){
+		
+		/*
+		 * Adding all of our desired scenes.
+		 */
+		addScenes();
+		
+		/*
+		 * Exiting the program if there are no scenes added to the buffer.
+		 */
+		if(SCENES.size() == 0){
+			System.err.println("There are no scenes in buffer.");
+			System.exit(0);
+		}
+		
+		/*
+		 * Initializing our 2D graphics.
+		 */
+		set_graphics_2d();
+		
+		/*
+		 * Loading our textures.
+		 */
 		TextureBank.loadTextures("res/textures");
+	}
+	
+	private static void set_graphics_2d(){
+		GL11.glMatrixMode(GL11.GL_PROJECTION_MATRIX);
+		GL11.glOrtho(0, Display.getWidth(), 0, Display.getHeight(), 1, -1);
+		GL11.glMatrixMode(GL11.GL_MODELVIEW_MATRIX);
+		GL11.glLoadIdentity(); 
 	}
 	
 	/**
@@ -172,6 +201,20 @@ public class Seaviver {
 	private void clearDisplay(Color color, float alpha){
 		GL11.glClear(GL11.GL_COLOR_BUFFER_BIT | GL11.GL_DEPTH_BUFFER_BIT);
 		GL11.glClearColor(color.getRed()/255f, color.getGreen()/255f, color.getBlue()/255f, alpha);
+	}
+	
+	/**
+	 * Here we add all of our scenes.
+	 */
+	private void addScenes(){
+		setScenes(new Test_Scene());
+	}
+	
+	/**
+	 * This function is used to add scenes to the game in the form of an array.
+	 */
+	private void setScenes(Scene... scenes){
+		SCENES = new ArrayList<Scene>(Arrays.asList(scenes));
 	}
 	
 	/**

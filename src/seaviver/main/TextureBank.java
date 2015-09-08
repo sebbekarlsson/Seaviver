@@ -10,6 +10,9 @@ import org.newdawn.slick.opengl.TextureLoader;
 
 public class TextureBank {
 	
+	/*
+	 * Creating a hashmap that will be used as a dictionary for all our textures.
+	 */
 	private static HashMap<String, Texture> textures = new HashMap<String, Texture>();
 	
 	/**

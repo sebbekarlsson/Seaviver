@@ -1,2 +1,2 @@
 ## Seaviver
-> Escape the sea.
+> What kind of game this will be is not defined yet.

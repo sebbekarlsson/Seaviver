@@ -19,8 +19,13 @@ public abstract class Scene {
 	 */
 	public ArrayList<Actor> actors = new ArrayList<Actor>();
 	
+	/*
+	 * This variable is for initialization.
+	 */
+	protected boolean initialized = false;
+	
 	/**
-	 * This function is primarly used to call two other methods. Tick() and Draw(). It can also be used to specify standard
+	 * This function is primarily used to call two other methods. Tick() and Draw(). It can also be used to specify standard
 	 * updates for a scene.
 	 * 
 	 * @param delta the current delta-time.
@@ -32,7 +37,14 @@ public abstract class Scene {
 	}
 	
 	/**
-	 * This functon is used to update the current state of this scene.
+	 * This function is used to initialize the scene.
+	 * 
+	 * @param delta the current delta-time.
+	 */
+	protected abstract void init(int delta);
+	
+	/**
+	 * This function is used to update the current state of this scene.
 	 * 
 	 * @param delta the current delta-time.
 	 */
@@ -54,6 +66,24 @@ public abstract class Scene {
 		for(int i = 0; i < actors.size(); i++){
 			actors.get(i).update(delta);
 		}
+	}
+	
+	/**
+	 * This function is used to check if the scene has been initialized.
+	 * 
+	 * @return boolean value, initialized or not.
+	 */
+	public boolean isInitialized(){
+		return this.initialized;
+	}
+	
+	/**
+	 * This function is used to set the scene to initialized or not.
+	 * 
+	 * @param initialized boolean value
+	 */
+	public void setInitialized(boolean initialized){
+		this.initialized = initialized;
 	}
 	
 	/**

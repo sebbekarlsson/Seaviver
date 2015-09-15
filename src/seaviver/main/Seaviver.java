@@ -112,6 +112,14 @@ public class Seaviver {
 			Scene scene = getCurrentScene();
 			
 			/*
+			 * Initializes the scene if it has not already been.
+			 */
+			if(!scene.isInitialized()){
+				scene.init(0);
+				scene.setInitialized(true);
+			}
+			
+			/*
 			 * Clearing the display with the current scene's background-color.
 			 */
 			clearDisplay(scene.getBackgroundColor(), 1f);

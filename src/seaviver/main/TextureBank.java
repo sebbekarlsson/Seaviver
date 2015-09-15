@@ -56,4 +56,14 @@ public class TextureBank {
 		
 		return texture;
 	}
+	
+	/**
+	 * This function is used to collect a desired texture from the loaded textures.
+	 * 
+	 * @param name the name of the texture. for example "horse.png"
+	 * @return desired texture.
+	 */
+	public Texture getTexture(String name){
+		return textures.get(name);
+	}
 }

@@ -64,6 +64,10 @@ public abstract class Scene {
 	 */
 	private void updateActors(float delta){
 		for(int i = 0; i < actors.size(); i++){
+			if(!actors.get(i).isInitialized()){
+				actors.get(i).init(delta);
+				actors.get(i).setInitialized(true);
+			}
 			actors.get(i).update(delta);
 		}
 	}

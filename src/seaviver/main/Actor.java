@@ -26,6 +26,11 @@ public abstract class Actor {
 	 */
 	protected Hitbox hitbox = new Hitbox();
 	
+	/*
+	 * This variable is for initialization.
+	 */
+	protected boolean initialized = false;
+	
 	public Actor(float x, float y){
 		this.x = x;
 		this.y = y;
@@ -74,6 +79,13 @@ public abstract class Actor {
 	}
 	
 	/**
+	 * This function is used to initialize the actor.
+	 * 
+	 * @param delta the current delta-time.
+	 */
+	protected abstract void init(float delta);
+	
+	/**
 	 * This function is used to update the current state of the graphics that this actor is drawing.
 	 * 
 	 * @param delta the current delta-time.
@@ -110,5 +122,23 @@ public abstract class Actor {
 	 */
 	public Hitbox getHitbox(){
 		return this.hitbox;
+	}
+	
+	/**
+	 * This function is used to check if the actor has been initialized.
+	 * 
+	 * @return boolean value, initialized or not.
+	 */
+	public boolean isInitialized(){
+		return this.initialized;
+	}
+	
+	/**
+	 * This function is used to set the actor to initialized or not.
+	 * 
+	 * @param initialized boolean value
+	 */
+	public void setInitialized(boolean initialized){
+		this.initialized = initialized;
 	}
 }

@@ -7,7 +7,7 @@ public class Test_Actor extends Entity {
 
 	public Test_Actor(float x, float y) {
 		super(x, y);
-		this.sprite.setTextures(TextureBank.getTexture("tile_grass.png"));
+		
 	}
 
 	@Override
@@ -19,6 +19,12 @@ public class Test_Actor extends Entity {
 	@Override
 	protected void tick(float delta) {
 		dy += 1f;
+	}
+
+	@Override
+	protected void init(float delta) {
+		this.sprite.setTextures(TextureBank.getTexture("tile_grass.png"));
+		
 	}
 
 }

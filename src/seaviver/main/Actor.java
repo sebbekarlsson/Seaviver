@@ -12,6 +12,11 @@ public abstract class Actor {
 	 */
 	protected float x, y, depth = 0f;
 	
+	/*
+	 * Creating a sprite for the actor.
+	 */
+	public Sprite sprite = new Sprite();
+	
 	/**
 	 * 
 	 * @return the x position of the actor.

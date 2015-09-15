@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import org.lwjgl.LWJGLException;
+import org.lwjgl.Sys;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
@@ -52,6 +53,13 @@ public class Seaviver {
 	 * This is basically a pointer for the scene-list. (Which scene is currently relevant?)
 	 */
 	public static int SCENE_INDEX = 0;
+	
+	/*
+	 * Initializing some variables for timing.
+	 */
+    long lastFrame;
+    int fps;
+    long lastFPS;
 	
 	/**
 	 * Let's start the game by creating an instance of it.
@@ -102,9 +110,9 @@ public class Seaviver {
 		while(!Display.isCloseRequested()){
 			
 			/*
-			 * Updating our 2D graphics.
+			 * Calculating our delta-time.
 			 */
-			set_graphics_2d();
+			float delta = getDelta() / 1000f;
 			
 			/*
 			 * Fetching the current scene, because we will need it.
@@ -112,23 +120,32 @@ public class Seaviver {
 			Scene scene = getCurrentScene();
 			
 			/*
-			 * Initializes the scene if it has not already been.
-			 */
-			if(!scene.isInitialized()){
-				scene.init(0);
-				scene.setInitialized(true);
-			}
-			
-			/*
 			 * Clearing the display with the current scene's background-color.
 			 */
 			clearDisplay(scene.getBackgroundColor(), 1f);
 			
 			/*
+			 * Updating our 2D graphics.
+			 */
+			set_graphics_2d();
+			
+			
+			
+			/*
+			 * Initializes the scene if it has not already been.
+			 */
+			if(!scene.isInitialized()){
+				scene.init(delta);
+				scene.setInitialized(true);
+			}
+			
+			
+			/*
 			 * Updating the current state of the game.
 			 */
 			GL11.glPushMatrix();
-			update(0);
+			update(delta);
+			scene.update(delta);
 			GL11.glPopMatrix();
 			
 			/*
@@ -148,7 +165,7 @@ public class Seaviver {
 	 * 
 	 * @param delta the current delta-time.
 	 */
-	private void update(int delta){
+	private void update(float delta){
 		
 	}
 	
@@ -185,10 +202,13 @@ public class Seaviver {
 	 * This function is used to initialize the 2D graphics (glOrtho-view)
 	 */
 	private static void set_graphics_2d(){
-		GL11.glMatrixMode(GL11.GL_PROJECTION_MATRIX);
-		GL11.glOrtho(0, Display.getWidth(), 0, Display.getHeight(), 1, -1);
-		GL11.glMatrixMode(GL11.GL_MODELVIEW_MATRIX);
-		GL11.glLoadIdentity(); 
+		GL11.glMatrixMode(GL11.GL_PROJECTION);
+        GL11.glLoadIdentity();
+        GL11.glOrtho(0, Display.getWidth(), Display.getHeight(), 0,-1f,1000 );
+        GL11.glMatrixMode(GL11.GL_MODELVIEW);
+     	GL11.glLoadIdentity();
+     	GL11.glEnable(GL11.GL_TEXTURE_2D);
+     	GL11.glEnable(GL11.GL_DEPTH_TEST);
 	}
 	
 	/**
@@ -235,5 +255,27 @@ public class Seaviver {
 	 */
 	public static Scene getCurrentScene(){
 		return SCENES.get(SCENE_INDEX);
+	}
+	
+	/**
+	 * Get the time in milliseconds
+	 * 
+	 * @return The system time in milliseconds.
+	 */
+	public static long getTime() {
+		return (Sys.getTime() * 1000) / Sys.getTimerResolution();
+	}
+	
+	/**
+	 * Used to get the delta-time.
+	 * 
+	 * @return delta-time (Integer)
+	 */
+	public float getDelta() {
+	    long time = getTime();
+	    float delta = (time - lastFrame);
+	    lastFrame = time;
+	         
+	    return delta;
 	}
 }

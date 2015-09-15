@@ -14,10 +14,15 @@ public abstract class Entity extends Actor {
 	/*
 	 * Setting the default friction value for the Entity.
 	 */
-	protected float friction = 0.5f;
+	protected float friction = 0.01f;
+	
+	public Entity(float x, float y) {
+		super(x, y);
+		// TODO Auto-generated constructor stub
+	}
 	
 	@Override
-	public void update(int delta){
+	public void update(float delta){
 		updatePhysics(delta);
 		tick(delta);
 		draw(delta);
@@ -29,7 +34,14 @@ public abstract class Entity extends Actor {
 	 * 
 	 * @param delta the current delta-time.
 	 */
-	private void updatePhysics(int delta){
+	private void updatePhysics(float delta){
+		
+		/*
+		 * Updating the position according to the delta positions.
+		 */
+		System.out.println("dx: " + dx + " x: " + x);
+		this.x += dx * delta;
+		this.y += dy * delta;
 		
 		/*
 		 * Velocity decreasement on the x-axis
@@ -59,7 +71,7 @@ public abstract class Entity extends Actor {
 				dy -= friction;
 			}
 		}
-		if(dy < 0){
+		if(dy * delta < 0){
 			if(dy + friction > 0){
 				dy = 0;
 			}else{

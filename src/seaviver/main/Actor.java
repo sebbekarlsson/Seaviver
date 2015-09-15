@@ -26,6 +26,11 @@ public abstract class Actor {
 	 */
 	protected Hitbox hitbox = new Hitbox();
 	
+	public Actor(float x, float y){
+		this.x = x;
+		this.y = y;
+	}
+	
 	/**
 	 * 
 	 * @return the x position of the actor.
@@ -55,7 +60,7 @@ public abstract class Actor {
 	 * 
 	 * @param delta the current delta-time.
 	 */
-	public void update(int delta){
+	public void update(float delta){
 		
 		/*
 		 * Updating the current state of the actor.
@@ -73,23 +78,24 @@ public abstract class Actor {
 	 * 
 	 * @param delta the current delta-time.
 	 */
-	protected abstract void draw(int delta);
+	protected abstract void draw(float delta);
 	
 	/**
 	 * This function is used to update the current state of the actor.
 	 * 
 	 * @param delta the current delta-time.
 	 */
-	protected abstract void tick(int delta);
+	protected abstract void tick(float delta);
 	
 	/**
 	 * This is the default draw method.
 	 * 
 	 * @param delta the current delta-time.
 	 */
-	public void drawDefault(int delta){
+	public void drawDefault(float delta){
+		
+		GL11.glTranslatef(x, y, 1f);
 		GL11.glPushMatrix();
-		GL11.glTranslatef(x, y, depth);
 		
 		sprite.draw(delta);
 		

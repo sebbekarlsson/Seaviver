@@ -63,7 +63,7 @@ public class TextureBank {
 	 * @param name the name of the texture. for example "horse.png"
 	 * @return desired texture.
 	 */
-	public Texture getTexture(String name){
+	public static Texture getTexture(String name){
 		return textures.get(name);
 	}
 }

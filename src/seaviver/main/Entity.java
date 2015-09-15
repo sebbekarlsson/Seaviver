@@ -4,7 +4,7 @@ package seaviver.main;
  * 
  * @author Sebastian Robert Karlsson
  */
-public class Entity extends Actor {
+public abstract class Entity extends Actor {
 	
 	/*
 	 * Setting the delta position variables for the Entity.
@@ -22,12 +22,6 @@ public class Entity extends Actor {
 		tick(delta);
 		draw(delta);
 	}
-	
-	@Override
-	protected void draw(int delta) {}
-
-	@Override
-	protected void tick(int delta) {}
 	
 	/**
 	 * This function is used to decrease the Entity's velocity with the friction value.

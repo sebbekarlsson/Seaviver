@@ -39,7 +39,6 @@ public abstract class Entity extends Actor {
 		/*
 		 * Updating the position according to the delta positions.
 		 */
-		System.out.println("dx: " + dx + " x: " + x);
 		this.x += dx * delta;
 		this.y += dy * delta;
 		

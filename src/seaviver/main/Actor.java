@@ -94,8 +94,9 @@ public abstract class Actor {
 	 */
 	public void drawDefault(float delta){
 		
-		GL11.glTranslatef(x, y, 1f);
+		
 		GL11.glPushMatrix();
+		GL11.glTranslatef(x, y, 1f);
 		
 		sprite.draw(delta);
 		

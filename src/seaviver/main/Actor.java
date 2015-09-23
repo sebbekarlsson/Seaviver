@@ -14,7 +14,7 @@ public abstract class Actor {
 	 * Setting our position variables.
 	 * Depth will be used to determine if an object should be drawn over another for example.
 	 */
-	protected float x, y, depth = 0f;
+	protected float x = 0f, y = 0f, depth = 0f, rotation = 0f;
 	
 	/*
 	 * Creating a sprite for the actor.
@@ -108,7 +108,9 @@ public abstract class Actor {
 		
 		
 		GL11.glPushMatrix();
+		
 		GL11.glTranslatef(x, y, 1f);
+		GL11.glRotatef(rotation, 0, 0f, 1f);
 		
 		sprite.draw(delta);
 		
@@ -122,6 +124,24 @@ public abstract class Actor {
 	 */
 	public Hitbox getHitbox(){
 		return this.hitbox;
+	}
+	
+	/**
+	 * This function is used to get the rotation of the actor.
+	 * 
+	 * @return actor rotation
+	 */
+	public float getRotation(){
+		return this.rotation;
+	}
+	
+	/**
+	 * This function is used to set the rotation of the actor.
+	 * 
+	 * @param rotation the chosen rotation to apply to the actor.
+	 */
+	public void setRotation(float rotation){
+		this.rotation = rotation;
 	}
 	
 	/**

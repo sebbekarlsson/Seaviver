@@ -70,7 +70,7 @@ public abstract class Entity extends Actor {
 				dy -= friction;
 			}
 		}
-		if(dy * delta < 0){
+		if(dy < 0){
 			if(dy + friction > 0){
 				dy = 0;
 			}else{

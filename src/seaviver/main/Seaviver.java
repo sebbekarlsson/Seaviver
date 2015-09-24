@@ -67,9 +67,10 @@ public class Seaviver {
 	 * @param args program arguments
 	 * @throws LWJGLException 
 	 */
-	public static void main(String[] args) throws LWJGLException{
+    // THIS SHOULD NOT BE HERE! ONLY WHEN TESTING
+	/*public static void main(String[] args) throws LWJGLException{
 		new Seaviver();
-	}
+	}*/
 	
 	/**
 	 * This is the Seaviver object constructor.

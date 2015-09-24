@@ -33,8 +33,7 @@ public class TextureBank {
 		    	textures.put(image.getName(), loadTexture(image.getAbsolutePath(), "png"));
 		    }
 		  } else {
-			  System.err.println("The path is not a directory (TextureBank -> loadTextures(path)");
-			  System.exit(1);
+			  System.out.println("Texture path is empty");
 		  }
 	}
 	

@@ -34,7 +34,7 @@ public abstract class Entity extends Actor {
 	 * 
 	 * @param delta the current delta-time.
 	 */
-	private void updatePhysics(float delta){
+	private void updatePhysics(float delta){setRotation(getRotation()+1f);
 		
 		/*
 		 * Updating the position according to the delta positions.

@@ -20,6 +20,11 @@ public abstract class Scene {
 	public ArrayList<Actor> actors = new ArrayList<Actor>();
 	
 	/*
+	 * Creating a camera for the view
+	 */
+	protected Camera camera = new Camera(0, 0);
+	
+	/*
 	 * This variable is for initialization.
 	 */
 	protected boolean initialized = false;
@@ -149,5 +154,14 @@ public abstract class Scene {
 	 */
 	public void destroyActor(int index){
 		actors.remove(index);
+	}
+	
+	/**
+	 * This function is used to get the camera of the scene.
+	 * 
+	 * @return the camera
+	 */
+	public Camera getCamera(){
+		return this.camera;
 	}
 }

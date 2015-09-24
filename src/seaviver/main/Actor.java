@@ -129,7 +129,6 @@ public abstract class Actor {
 		
 		GL11.glTranslatef(x, y, 1f);
 		GL11.glRotatef(rotation, 0, 0f, 1f);
-		
 		sprite.draw(delta, -sprite.getTexture().getImageWidth()/2, -sprite.getTexture().getImageHeight()/2);
 		
 		GL11.glPopMatrix();

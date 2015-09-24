@@ -11,7 +11,6 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.GL11;
 
-import seaviver.main.test.Test_Scene;
 
 /**
  * 
@@ -43,6 +42,11 @@ public class Seaviver {
 	 * Setting the default title for the display.
 	 */
 	public static String TITLE = "SEAVIVER";
+	
+	/*
+	 * Creating a scene buffer
+	 */
+	public static Scene[] SCENEBUFFER;
 	
 	/*
 	 * Creating the scene-list that will hold all of the game's scenes.
@@ -77,7 +81,11 @@ public class Seaviver {
 	 * 
 	 * @throws LWJGLException because.
 	 */
-	public Seaviver() throws LWJGLException{
+	public Seaviver(Scene[] SCENEBUFFER) throws LWJGLException{
+		/*
+		 * Collecting our scene buffer.
+		 */
+		Seaviver.SCENEBUFFER = SCENEBUFFER;
 		
 		/*
 		 * Creating our display with a title.
@@ -240,12 +248,13 @@ public class Seaviver {
 	 * Here we add all of our scenes.
 	 */
 	private void addScenes(){
-		setScenes(new Test_Scene());
+		SCENES = new ArrayList<Scene>(Arrays.asList(Seaviver.SCENEBUFFER));
 	}
 	
 	/**
 	 * This function is used to add scenes to the game in the form of an array.
 	 */
+	@SuppressWarnings("unused")
 	private void setScenes(Scene... scenes){
 		SCENES = new ArrayList<Scene>(Arrays.asList(scenes));
 	}

@@ -9,7 +9,6 @@ public class Test_Scene extends Scene{
 	@Override
 	protected void tick(float delta) {
 		// TODO Auto-generated method stub
-		getCamera().setX(getCamera().getX()+3f);
 		
 	}
 

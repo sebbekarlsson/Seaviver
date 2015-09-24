@@ -18,7 +18,7 @@ public class Test_Actor extends Entity {
 
 	@Override
 	protected void tick(float delta) {
-		dy += 1f;
+		//dy += 1f;
 	}
 
 	@Override

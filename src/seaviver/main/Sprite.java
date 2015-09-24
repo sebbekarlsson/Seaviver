@@ -22,7 +22,7 @@ public class Sprite {
 	 * 
 	 * @param delta the current delta-time.
 	 */
-	public void draw(float delta){
+	public void draw(float delta, float x, float y){
 		GL11.glPushMatrix();
 		Texture texture = getTexture();
 		
@@ -31,16 +31,16 @@ public class Sprite {
 		texture.bind();
 		GL11.glBegin(GL11.GL_QUADS);
 			GL11.glTexCoord2f(0, 0);
-			GL11.glVertex2f(0, 0);
+			GL11.glVertex2f(x + 0, y + 0);
 			
 			GL11.glTexCoord2f(texture.getWidth(), 0);
-			GL11.glVertex2f(texture.getTextureWidth(), 0);
+			GL11.glVertex2f(x + texture.getTextureWidth(), y + 0);
 			
 			GL11.glTexCoord2f(texture.getWidth(), texture.getHeight());
-			GL11.glVertex2f(texture.getTextureWidth(), texture.getTextureHeight());
+			GL11.glVertex2f(x + texture.getTextureWidth(),  y + texture.getTextureHeight());
 			
 			GL11.glTexCoord2f(0, texture.getHeight());
-			GL11.glVertex2f(0, texture.getTextureHeight());
+			GL11.glVertex2f(x + 0, y + texture.getTextureHeight());
 		GL11.glEnd();
 		
 		GL11.glPopMatrix();

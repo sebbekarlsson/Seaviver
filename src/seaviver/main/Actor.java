@@ -53,6 +53,24 @@ public abstract class Actor {
 	}
 	
 	/**
+	 * This function is used to set the x position of the actor.
+	 * 
+	 * @param x the chosen x value
+	 */
+	public void setX(float x){
+		this.x = x;
+	}
+	
+	/**
+	 * This function is used to set the y position of the actor.
+	 * 
+	 * @param y the chosen y value
+	 */
+	public void setY(float y){
+		this.y = y;
+	}
+	
+	/**
 	 * 
 	 * @return the depth of the actor.
 	 */

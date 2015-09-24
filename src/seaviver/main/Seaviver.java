@@ -143,7 +143,7 @@ public class Seaviver {
 			/*
 			 * Updating the current state of the game.
 			 */
-			GL11.glTranslatef(scene.getCamera().x, scene.getCamera().y, scene.getCamera().zoom);
+			GL11.glTranslatef(-scene.getCamera().x, -scene.getCamera().y, -scene.getCamera().zoom);
 			GL11.glPushMatrix();
 			update(delta);
 			scene.update(delta);

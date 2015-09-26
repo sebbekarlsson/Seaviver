@@ -21,24 +21,6 @@ public abstract class LightSource extends Entity {
 		super(x, y, scene);
 		// TODO Auto-generated constructor stub
 	}
-
-	@Override
-	protected void init(float delta) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void draw(float delta) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	protected void tick(float delta) {
-		// TODO Auto-generated method stub
-		
-	}
 	
 	/**
 	 * This function is used to get the current brightness of the light.

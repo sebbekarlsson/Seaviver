@@ -22,7 +22,7 @@ public abstract class Scene {
 	/*
 	 * Creating a camera for the view
 	 */
-	protected Camera camera = new Camera(0, 0);
+	protected Camera camera = new Camera(0, 0, this);
 	
 	/*
 	 * This variable is for initialization.

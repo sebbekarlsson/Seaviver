@@ -23,7 +23,6 @@ public class Sprite {
 	 * @param delta the current delta-time.
 	 */
 	public void draw(float delta, float x, float y){
-		GL11.glPushMatrix();
 		Texture texture = getTexture();
 		
 		GL11.glPushMatrix();

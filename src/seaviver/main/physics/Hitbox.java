@@ -11,7 +11,7 @@ public class Hitbox {
 	/*
 	 * Setting & defaulting the width and height to 16px.
 	 */
-	public int width, height = 16;
+	public int width = 16, height = 16;
 	
 	/*
 	 * Creating the dimension with width and height.

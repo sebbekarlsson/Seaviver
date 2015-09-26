@@ -14,7 +14,7 @@ public abstract class Actor {
 	 * Setting our position variables.
 	 * Depth will be used to determine if an object should be drawn over another for example.
 	 */
-	protected float x = 0f, y = 0f, depth = 0f, rotation = 0f;
+	protected float x = 0f, y = 0f, depth = -100f, rotation = 0f;
 	
 	/*
 	 * Creating a sprite for the actor.
@@ -27,13 +27,19 @@ public abstract class Actor {
 	protected Hitbox hitbox = new Hitbox();
 	
 	/*
+	 * Setting the default scene to null.
+	 */
+	protected Scene scene;
+	
+	/*
 	 * This variable is for initialization.
 	 */
 	protected boolean initialized = false;
 	
-	public Actor(float x, float y){
+	public Actor(float x, float y, Scene scene){
 		this.x = x;
 		this.y = y;
+		this.scene = scene;
 	}
 	
 	/**
@@ -126,8 +132,8 @@ public abstract class Actor {
 		
 		
 		GL11.glPushMatrix();
+		GL11.glTranslatef(x, y, depth);
 		
-		GL11.glTranslatef(x, y, 1f);
 		GL11.glRotatef(rotation, 0, 0f, 1f);
 		sprite.draw(delta, -sprite.getTexture().getImageWidth()/2, -sprite.getTexture().getImageHeight()/2);
 		
@@ -177,5 +183,9 @@ public abstract class Actor {
 	 */
 	public void setInitialized(boolean initialized){
 		this.initialized = initialized;
+	}
+	
+	public Scene getScene(){
+		return this.scene;
 	}
 }

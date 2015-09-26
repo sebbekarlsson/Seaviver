@@ -129,15 +129,14 @@ public class Seaviver {
 			Scene scene = getCurrentScene();
 			
 			/*
-			 * Clearing the display with the current scene's background-color.
-			 */
-			clearDisplay(scene.getBackgroundColor(), 1f);
-			
-			/*
 			 * Updating our 2D graphics.
 			 */
 			set_graphics_2d();
 			
+			/*
+			 * Clearing the display with the current scene's background-color.
+			 */
+			clearDisplay(scene.getBackgroundColor(), 1f);
 			
 			
 			/*

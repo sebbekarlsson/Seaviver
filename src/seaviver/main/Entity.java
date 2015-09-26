@@ -16,11 +16,11 @@ public abstract class Entity extends Actor {
 	 */
 	protected float friction = 0.01f;
 	
-	public Entity(float x, float y) {
-		super(x, y);
+	public Entity(float x, float y, Scene scene) {
+		super(x, y, scene);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	@Override
 	public void update(float delta){
 		updatePhysics(delta);

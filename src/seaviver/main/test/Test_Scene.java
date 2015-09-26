@@ -16,9 +16,9 @@ public class Test_Scene extends Scene{
 
 	@Override
 	protected void tick(float delta) {
-		mouse_light.setX(Mouse.getX());
-		mouse_light.setY(Display.getHeight() - Mouse.getY());
-		
+		mouse_light.setX(Mouse.getX() + getCamera().getX());
+		mouse_light.setY((Display.getHeight() - Mouse.getY()) + getCamera().getY());
+		getCamera().setX(getCamera().getX()+1f);
 	}
 
 	@Override
@@ -47,6 +47,12 @@ public class Test_Scene extends Scene{
 		
 		lightengine.addLight(mouse_light);
 		
+		
+	}
+
+	@Override
+	protected void gui(float delta) {
+		lightengine.update(delta);
 		
 	}
 

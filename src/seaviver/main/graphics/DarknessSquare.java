@@ -92,7 +92,7 @@ public class DarknessSquare extends Actor {
 			/*
 			 * Caĺculating the distance.
 			 */
-			float distance = GMath.getDistance(x, y, light.getX(), light.getY());
+			float distance = GMath.getDistance(x+scene.getCamera().getX(), y+scene.getCamera().getY(), light.getX(), light.getY());
 			
 			/*
 			 * Setting the strength of the darkness to the light's brightness.

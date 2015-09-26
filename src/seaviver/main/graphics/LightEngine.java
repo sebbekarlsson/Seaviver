@@ -39,7 +39,15 @@ public class LightEngine {
 				squares[xx][yy] = new DarknessSquare(xx * square_size, yy * square_size, scene, this);
 				squares[xx][yy].getHitbox().setDimension(square_size, square_size);
 				squares[xx][yy].setStrength(strength);
-				scene.instantiateActor(squares[xx][yy]);
+			}
+		}
+	}
+	
+	public void update(float delta){
+		for(int xx = 0; xx < squares.length; xx++){
+			for(int yy = 0; yy < squares[xx].length; yy++){
+				squares[xx][yy].update(delta);
+				
 			}
 		}
 	}

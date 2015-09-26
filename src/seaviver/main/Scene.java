@@ -3,6 +3,8 @@ package seaviver.main;
 import java.awt.Color;
 import java.util.ArrayList;
 
+import org.lwjgl.opengl.GL11;
+
 /**
  * 
  * @author Sebastian Robert Karlsson
@@ -36,9 +38,19 @@ public abstract class Scene {
 	 * @param delta the current delta-time.
 	 */
 	public void update(float delta){
+
+		GL11.glTranslatef(-getCamera().x, -getCamera().y, -getCamera().zoom);
+		GL11.glPushMatrix();
+		
 		updateActors(delta);
 		tick(delta);
 		draw(delta);
+		
+		GL11.glPopMatrix();
+		
+		
+		GL11.glLoadIdentity();
+		gui(delta);
 	}
 	
 	/**
@@ -62,6 +74,12 @@ public abstract class Scene {
 	 */
 	protected abstract void draw(float delta);
 	
+	/**
+	 * This function will update without translating.
+	 * 
+	 * @param delta the current delta-time.
+	 */
+	protected abstract void gui(float delta);
 	/**
 	 * This is a private method that updates all of the actors in this scene.
 	 * 

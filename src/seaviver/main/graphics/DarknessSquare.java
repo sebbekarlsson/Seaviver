@@ -9,6 +9,11 @@ import seaviver.main.Scene;
 import seaviver.main.utils.GMath;
 
 public class DarknessSquare extends Actor {
+	
+	/*
+	 * This variable is for initialization.
+	 */
+	protected boolean initialized = false;
 
 	/*
 	 * Setting the default color.
@@ -39,7 +44,7 @@ public class DarknessSquare extends Actor {
 
 	@Override
 	protected void init(float delta) {
-		depth = -10f;
+		depth = 0f;
 
 	}
 
@@ -105,7 +110,7 @@ public class DarknessSquare extends Actor {
 				/*
 				 * Calculating the percentage of change.
 				 */
-				percentage = distance/strength;
+				percentage = distance / strength;
 				percentage = Math.abs(percentage-1);
 				
 
@@ -203,5 +208,23 @@ public class DarknessSquare extends Actor {
 	 */
 	public void setIntensity(float intensity){
 		this.intensity = intensity;
+	}
+	
+	/**
+	 * This function is used to check if the actor has been initialized.
+	 * 
+	 * @return boolean value, initialized or not.
+	 */
+	public boolean isInitialized(){
+		return this.initialized;
+	}
+	
+	/**
+	 * This function is used to set the actor to initialized or not.
+	 * 
+	 * @param initialized boolean value
+	 */
+	public void setInitialized(boolean initialized){
+		this.initialized = initialized;
 	}
 }

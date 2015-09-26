@@ -5,7 +5,7 @@ import java.awt.Color;
 import seaviver.main.Entity;
 import seaviver.main.Scene;
 
-public class LightSource extends Entity {
+public abstract class LightSource extends Entity {
 	
 	/*
 	 * Setting the default brightness.

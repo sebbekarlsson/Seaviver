@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import seaviver.main.Scene;
 
 public class LightEngine {
-	
+
 	/*
 	 * Setting some default values.
 	 */
@@ -13,23 +13,28 @@ public class LightEngine {
 	protected int square_size = 16;
 	protected float strength = 1f;
 	protected Scene scene;
-	
+
+	/*
+	 * Defaulting enabled to false
+	 */
+	protected boolean enabled = false;
+
 	/*
 	 * Creating the array of squares
 	 */
 	public DarknessSquare[][] squares;
-	
+
 	public ArrayList<LightSource> lights = new ArrayList<LightSource>();
-	
+
 	public LightEngine(int width, int height, int square_size, Scene scene){
 		this.width = width;
 		this.height = height;
 		this.square_size = square_size;
 		this.scene = scene;
-		
+
 		this.squares = new DarknessSquare[(width+square_size) / square_size][(height+square_size) / square_size];
 	}
-	
+
 	/*
 	 * Initializing the darkness-network. Creating all the squares.
 	 */
@@ -42,16 +47,25 @@ public class LightEngine {
 			}
 		}
 	}
-	
+
 	public void update(float delta){
-		for(int xx = 0; xx < squares.length; xx++){
-			for(int yy = 0; yy < squares[xx].length; yy++){
-				squares[xx][yy].update(delta);
-				
+		if(isEnabled()){
+			for(int i = 0; i < lights.size(); i++){
+				lights.get(i).update(delta);
+			}
+			
+			for(int xx = 0; xx < squares.length; xx++){
+				for(int yy = 0; yy < squares[xx].length; yy++){
+					squares[xx][yy].update(delta);
+					if(!squares[xx][yy].isInitialized()){
+						squares[xx][yy].init(delta);
+						squares[xx][yy].setInitialized(true);
+					}
+				}
 			}
 		}
 	}
-	
+
 	/**
 	 * This function will return all of the lights.
 	 * 
@@ -60,7 +74,7 @@ public class LightEngine {
 	public ArrayList<LightSource> getLights(){
 		return this.lights;
 	}
-	
+
 	/**
 	 * This function is used to add lightsources to the light-engine.
 	 * 
@@ -69,5 +83,22 @@ public class LightEngine {
 	public void addLight(LightSource light){
 		lights.add(light);
 	}
-	
+
+	/**
+	 * This function is used to check if the lightengine is enabled.
+	 * 
+	 * @return enabled
+	 */
+	public boolean isEnabled(){
+		return this.enabled;
+	}
+
+	/**
+	 * This function is used to set the lightengine to either enabled or disabled.
+	 * 
+	 * @param enabled the choosen enabled value
+	 */
+	public void setEnabled(boolean enabled){
+		this.enabled = enabled;
+	}
 }

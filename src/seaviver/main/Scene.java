@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import org.lwjgl.opengl.GL11;
 
+import seaviver.main.graphics.LightEngine;
+
 /**
  * 
  * @author Sebastian Robert Karlsson
@@ -27,9 +29,15 @@ public abstract class Scene {
 	protected Camera camera = new Camera(0, 0, this);
 	
 	/*
+	 * Creating a lightengine
+	 */
+	protected LightEngine lightengine;
+	
+	/*
 	 * This variable is for initialization.
 	 */
 	protected boolean initialized = false;
+	
 	
 	/**
 	 * This function is primarily used to call two other methods. Tick() and Draw(). It can also be used to specify standard
@@ -47,7 +55,6 @@ public abstract class Scene {
 		draw(delta);
 		
 		GL11.glPopMatrix();
-		
 		
 		GL11.glLoadIdentity();
 		gui(delta);
@@ -181,5 +188,24 @@ public abstract class Scene {
 	 */
 	public Camera getCamera(){
 		return this.camera;
+	}
+	
+	/**
+	 * This function is used to get the lightengine.
+	 * 
+	 * @return the lightengine of the scene
+	 */
+	public LightEngine getLightEngine(){
+		return this.lightengine;
+	}
+	
+	/**
+	 * This function is used to create a lightengine.
+	 * 
+	 * @param lightengine a lightengine object.
+	 */
+	public void createLightEngine(LightEngine lightengine){
+		this.lightengine = lightengine;
+		this.lightengine.init();
 	}
 }

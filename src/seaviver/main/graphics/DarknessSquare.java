@@ -114,14 +114,7 @@ public class DarknessSquare extends Actor {
 			float strength = light.getBrightness();
 			double percentage = 0;
 			
-			/*
-			 * Implementing flickering.
-			 */
-			if(light.isFlickering()){
-				strength = strength*random.nextFloat();
-			}
-			
-			if(distance < strength){
+			if(distance < strength*(random.nextFloat() * light.getNoise())){
 				/*
 				 * Calculating the percentage of change.
 				 */

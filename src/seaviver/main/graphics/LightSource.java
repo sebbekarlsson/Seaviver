@@ -18,9 +18,9 @@ public abstract class LightSource extends Entity {
 	protected Color color = Color.red;
 	
 	/*
-	 * Should the light flicker?
+	 * Noise for the light.
 	 */
-	protected boolean flicker = false;
+	protected float noise = 0f;
 
 	public LightSource(float x, float y, Scene scene) {
 		super(x, y, scene);
@@ -64,20 +64,20 @@ public abstract class LightSource extends Entity {
 	}
 	
 	/**
-	 * This function is used to make the light fĺicker.
+	 * This function is used to set noise to the light.
 	 * 
-	 * @param flicker a boolean value
+	 * @param noise a float value
 	 */
-	public void setFlickering(boolean flicker){
-		this.flicker = flicker;
+	public void setNoise(float noise){
+		this.noise = noise;
 	}
 	
 	/**
-	 * This function is used to check if the light is flickering.
+	 * This function is used to get the noise of the light.
 	 * 
-	 * @return a boolean value.
+	 * @return a float value.
 	 */
-	public boolean isFlickering(){
-		return this.flicker;
+	public float getNoise(){
+		return this.noise;
 	}
 }

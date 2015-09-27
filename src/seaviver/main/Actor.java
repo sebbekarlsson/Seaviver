@@ -17,6 +17,11 @@ public abstract class Actor {
 	protected float x = 0f, y = 0f, depth = -100f, rotation = 0f;
 	
 	/*
+	 * This value is for collisions.
+	 */
+	protected boolean solid = false;
+	
+	/*
 	 * Creating a sprite for the actor.
 	 */
 	public Sprite sprite = new Sprite();

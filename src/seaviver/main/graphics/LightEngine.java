@@ -26,10 +26,11 @@ public class LightEngine {
 
 	public ArrayList<LightSource> lights = new ArrayList<LightSource>();
 
-	public LightEngine(int width, int height, int square_size, Scene scene){
+	public LightEngine(int width, int height, int square_size, float strength, Scene scene){
 		this.width = width;
 		this.height = height;
 		this.square_size = square_size;
+		this.strength = strength;
 		this.scene = scene;
 
 		this.squares = new DarknessSquare[(width+square_size) / square_size][(height+square_size) / square_size];

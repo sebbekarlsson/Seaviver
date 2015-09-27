@@ -37,7 +37,7 @@ public class Test_Scene extends Scene{
 		instantiateActor(new Test_Actor(64, 64, this));
 		instantiateActor(new Test_Actor(32, 32, this));
 		
-		createLightEngine(new LightEngine(Display.getWidth(), Display.getHeight(), 16, this));
+		createLightEngine(new LightEngine(Display.getWidth(), Display.getHeight(), 16, 1f, this));
 		getLightEngine().setEnabled(true);
 		
 		

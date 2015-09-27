@@ -119,6 +119,7 @@ public class LightEngine {
 	 */
 	public void setStrength(float strength){
 		this.strength = strength;
+		init();
 	}
 	
 	/**

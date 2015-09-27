@@ -1,6 +1,7 @@
 package seaviver.main.graphics;
 
 import java.awt.Color;
+import java.util.Random;
 
 import org.lwjgl.opengl.GL11;
 
@@ -31,6 +32,16 @@ public class DarknessSquare extends Actor {
 	 * Setting the default intensity.
 	 */
 	protected float intensity = 100f;
+	
+	/*
+	 * We will need random for light flickering.
+	 */
+	protected Random random = new Random();
+	
+	/*
+	 * Should the light flicker?
+	 */
+	protected boolean flicker = false;
 
 	/*
 	 * Setting the parent engine
@@ -105,6 +116,13 @@ public class DarknessSquare extends Actor {
 			 */
 			float strength = light.getBrightness();
 			double percentage = 0;
+			
+			/*
+			 * Implementing flickering.
+			 */
+			if(isFlickering()){
+				strength = strength*random.nextFloat();
+			}
 			
 			if(distance < strength){
 				/*
@@ -226,5 +244,23 @@ public class DarknessSquare extends Actor {
 	 */
 	public void setInitialized(boolean initialized){
 		this.initialized = initialized;
+	}
+	
+	/**
+	 * This function is used to make the light fĺicker.
+	 * 
+	 * @param flicker a boolean value
+	 */
+	public void setFlickering(boolean flicker){
+		this.flicker = flicker;
+	}
+	
+	/**
+	 * This function is used to check if the light is flickering.
+	 * 
+	 * @return a boolean value.
+	 */
+	public boolean isFlickering(){
+		return this.flicker;
 	}
 }

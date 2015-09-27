@@ -3,6 +3,7 @@ package seaviver.main.test;
 import java.awt.Color;
 import java.util.Random;
 
+import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 
 import seaviver.main.Scene;
@@ -16,6 +17,10 @@ public class Test_Scene extends Scene{
 	@Override
 	protected void tick(float delta) {
 		getCamera().setX(getCamera().getX()+1f);
+		
+		if(Mouse.isButtonDown(0)){
+			getLightEngine().addLight(new Test_Light(getCamera().getX() + Mouse.getX(), Display.getHeight() - Mouse.getY() + getCamera().getY(), this));
+		}
 		
 	}
 

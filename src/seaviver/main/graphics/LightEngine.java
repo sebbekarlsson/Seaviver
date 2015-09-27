@@ -101,4 +101,40 @@ public class LightEngine {
 	public void setEnabled(boolean enabled){
 		this.enabled = enabled;
 	}
+	
+	/**
+	 * This function is used to get the strength value of the darkness.
+	 * 
+	 * @return the strength of the darkness
+	 */
+	public float getStrength(){
+		return this.strength;
+	}
+	
+	/**
+	 * This function is used to set the strength of the darkness.
+	 * 
+	 * @param strength the chosen strength
+	 */
+	public void setStrength(float strength){
+		this.strength = strength;
+	}
+	
+	/**
+	 * This function is used to get the roughness of the darkness.
+	 * 
+	 * @return the size of the darkness square. (roughness)
+	 */
+	public int getSquareSize(){
+		return this.square_size;
+	}
+	
+	/**
+	 * This function is used to set the roughness of the darkness.
+	 * 
+	 * @param square_size the chosen square_size
+	 */
+	public void setSquareSize(int square_size){
+		this.square_size = square_size;
+	}
 }

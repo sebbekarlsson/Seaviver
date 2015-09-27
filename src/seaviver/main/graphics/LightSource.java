@@ -16,6 +16,11 @@ public abstract class LightSource extends Entity {
 	 * Setting the default color.
 	 */
 	protected Color color = Color.red;
+	
+	/*
+	 * Should the light flicker?
+	 */
+	protected boolean flicker = false;
 
 	public LightSource(float x, float y, Scene scene) {
 		super(x, y, scene);
@@ -56,5 +61,23 @@ public abstract class LightSource extends Entity {
 	 */
 	public void setColor(Color color){
 		this.color = color;
+	}
+	
+	/**
+	 * This function is used to make the light fĺicker.
+	 * 
+	 * @param flicker a boolean value
+	 */
+	public void setFlickering(boolean flicker){
+		this.flicker = flicker;
+	}
+	
+	/**
+	 * This function is used to check if the light is flickering.
+	 * 
+	 * @return a boolean value.
+	 */
+	public boolean isFlickering(){
+		return this.flicker;
 	}
 }

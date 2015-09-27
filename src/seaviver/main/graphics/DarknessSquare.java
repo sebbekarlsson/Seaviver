@@ -38,10 +38,7 @@ public class DarknessSquare extends Actor {
 	 */
 	protected Random random = new Random();
 	
-	/*
-	 * Should the light flicker?
-	 */
-	protected boolean flicker = false;
+	
 
 	/*
 	 * Setting the parent engine
@@ -120,7 +117,7 @@ public class DarknessSquare extends Actor {
 			/*
 			 * Implementing flickering.
 			 */
-			if(isFlickering()){
+			if(light.isFlickering()){
 				strength = strength*random.nextFloat();
 			}
 			
@@ -244,23 +241,5 @@ public class DarknessSquare extends Actor {
 	 */
 	public void setInitialized(boolean initialized){
 		this.initialized = initialized;
-	}
-	
-	/**
-	 * This function is used to make the light fĺicker.
-	 * 
-	 * @param flicker a boolean value
-	 */
-	public void setFlickering(boolean flicker){
-		this.flicker = flicker;
-	}
-	
-	/**
-	 * This function is used to check if the light is flickering.
-	 * 
-	 * @return a boolean value.
-	 */
-	public boolean isFlickering(){
-		return this.flicker;
 	}
 }

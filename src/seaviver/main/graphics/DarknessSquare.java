@@ -114,7 +114,14 @@ public class DarknessSquare extends Actor {
 			float strength = light.getBrightness();
 			double percentage = 0;
 			
-			if(distance < strength*(random.nextFloat() * light.getNoise())){
+			/*
+			 * Implement noise if the light isn't stable.
+			 */
+			if(!light.isStable()){
+				strength = strength * (random.nextFloat() * light.getNoise());
+			}
+			
+			if(distance < strength){
 				/*
 				 * Calculating the percentage of change.
 				 */

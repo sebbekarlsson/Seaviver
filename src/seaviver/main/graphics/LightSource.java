@@ -18,9 +18,14 @@ public abstract class LightSource extends Entity {
 	protected Color color = Color.red;
 	
 	/*
+	 * Should the light be stable?
+	 */
+	protected boolean stable = true;
+	
+	/*
 	 * Noise for the light.
 	 */
-	protected float noise = 0f;
+	protected float noise = 1f;
 
 	public LightSource(float x, float y, Scene scene) {
 		super(x, y, scene);
@@ -79,5 +84,23 @@ public abstract class LightSource extends Entity {
 	 */
 	public float getNoise(){
 		return this.noise;
+	}
+	
+	/**
+	 * This function is used to check if the light is stable.
+	 * 
+	 * @return the current stable boolean
+	 */
+	public boolean isStable(){
+		return this.stable;
+	}
+	
+	/**
+	 * This function is used to set the light to either stable or unstable.
+	 * 
+	 * @param stable a boolean value
+	 */
+	public void setStable(boolean stable){
+		this.stable = stable;
 	}
 }
